@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import numpy as np
+import sklearn
 
 df=pickle.load(open('df.pkl','rb'))
 pipe=pickle.load(open('pipe.pkl','rb'))
@@ -42,4 +43,4 @@ if st.button("PREDICT PRICE"):
     query=np.array([[company,typename,cpu,ram,gpu,os,weight,ips,touchscreen,cpu_speed,hdd,ssd,ppi]])
     op=pipe.predict(query)
     f_op=int(round(op[0],-2))
-    st.subheader("The estimated price of the laptop with the abvoe selected configuration is ₹"+str(f_op))
+    st.subheader("The estimated price of the laptop with the above selected configuration is ₹"+str(f_op))
